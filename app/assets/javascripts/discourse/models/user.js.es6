@@ -375,10 +375,10 @@ const User = RestModel.extend({
     @param {String} email The email address of the user to invite to the site
     @returns {Promise} the result of the server call
   **/
-  createInvite: function(email, groupNames) {
+  createInvite: function(email, groupNames, userRole) {
     return Discourse.ajax('/invites', {
       type: 'POST',
-      data: {email: email, group_names: groupNames}
+      data: {email: email, group_names: groupNames , user_role: userRole}
     });
   },
 
