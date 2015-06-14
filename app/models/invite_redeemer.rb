@@ -31,7 +31,7 @@ InviteRedeemer = Struct.new(:invite, :username, :name) do
 
     puts "\n\n\n\nbefore creating user object\n\n\n\n"
 
-    user = User.new(email: invite.email, username: available_username, name: available_name, active: true, trust_level: SiteSetting.default_invitee_trust_level, user_role: "invite_redeemer")
+    user = User.new(email: invite.email, username: available_username, name: available_name, active: true, trust_level: SiteSetting.default_invitee_trust_level, user_role: invite.user_role)
    
     user.save!
   
