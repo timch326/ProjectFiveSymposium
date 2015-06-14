@@ -172,8 +172,8 @@ basic:
     default: false
     client: true
   enable_badges:
-    client: true
-    default: true
+    client: false
+    default: false
 
 login:
   invite_only:
@@ -560,10 +560,10 @@ files:
 
 trust:
   default_trust_level:
-    default: 0
+    default: 4
     enum: 'TrustLevelSetting'
   default_invitee_trust_level:
-    default: 1
+    default: 4
     enum: 'TrustLevelSetting'
   min_trust_to_create_topic:
     default: 0
