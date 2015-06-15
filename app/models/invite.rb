@@ -74,7 +74,7 @@ class Invite < ActiveRecord::Base
   # Create an invite for a user, supplying an optional topic
   #
   # Return the previously existing invite if already exists. Returns nil if the invite can't be created.
-  def self.invite_by_email(email, invited_by, topic=nil, group_ids=nil)
+  def self.invite_by_email(email, user_role, invited_by, topic=nil, group_ids=nil)
     lower_email = Email.downcase(email)
     user = User.find_by(email: lower_email)
 
@@ -94,7 +94,7 @@ class Invite < ActiveRecord::Base
     end
 
     if !invite
-      invite = Invite.create!(invited_by: invited_by, email: lower_email)
+      invite = Invite.create!(invited_by: invited_by, email: lower_email, user_role: user_role)
     end
 
     if topic && !invite.topic_invites.pluck(:topic_id).include?(topic.id)
