@@ -143,9 +143,24 @@ const AdminUser = Discourse.User.extend({
   setOriginalTrustLevel() {
     this.set('originalTrustLevel', this.get('trust_level'));
   },
+ 
 
+  
   dirty: Discourse.computed.propertyNotEqual('originalTrustLevel', 'trustLevel.id'),
 
+  userRoleInstructions: function() {
+    return I18n.t('topic.add_user_role_title');
+  }.property(),
+
+  userRolesOptions: function() {
+    return [
+      { name: I18n.t('topic.user_roles.teacher'), value: "teacher" },
+      { name: I18n.t('topic.user_roles.student'), value: "student" },
+      { name: I18n.t('topic.user_roles.mentor'), value: "mentor" } 
+    ];
+	}.property(),	
+  
+  
   saveTrustLevel() {
     return Discourse.ajax("/admin/users/" + this.id + "/trust_level", {
       type: 'PUT',

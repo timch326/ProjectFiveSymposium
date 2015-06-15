@@ -31,6 +31,19 @@
       {{/link-to}}
     </div>
   </div>
+  
+  <div class='display-row'>
+    <div class='field'>{{model.userRoleInstructions}}</div>
+    <div class="value">
+      {{combo-box name="useRoleChange" content=model.userRolesOptions value= model.userRole}}
+      {{#if model.dirty}}
+        <div>
+          <button class='btn ok no-text' {{action "saveTrustLevel" target="content"}}>{{fa-icon "check"}}</button>
+          <button class='btn cancel no-text' {{action "restoreTrustLevel" target="content"}}>{{fa-icon "times"}}</button>
+        </div>
+      {{/if}}
+    </div>
+   </div>	
 
   {{#if canCheckEmails}}
     <div class='display-row email'>
