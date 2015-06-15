@@ -31,6 +31,7 @@ class InvitesController < ApplicationController
 
   def create
     params.require(:email)
+    params.require(:user_role)
 
     group_ids = Group.lookup_group_ids(params)
 
@@ -41,7 +42,7 @@ class InvitesController < ApplicationController
       guardian.ensure_can_send_multiple_invites!(current_user)
     end
 
-    if Invite.invite_by_email(params[:email], current_user, _topic=nil,  group_ids)
+    if Invite.invite_by_email(params[:email], params[:user_role], current_user, _topic=nil,  group_ids)
       render json: success_json
     else
       render json: failed_json, status: 422

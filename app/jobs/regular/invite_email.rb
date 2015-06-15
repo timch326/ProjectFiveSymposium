@@ -10,6 +10,11 @@ module Jobs
 
       invite = Invite.find_by(id: args[:invite_id])
       message = InviteMailer.send_invite(invite)
+      
+      puts "\n\n\n\n\n"
+      puts message
+      puts "\n\n\n\n\n"
+
       Email::Sender.new(message, :invite).send
     end
 

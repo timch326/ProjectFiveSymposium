@@ -1112,6 +1112,12 @@ en:
       inviting: "Inviting..."
       automatically_add_to_groups_optional: "This invite also includes access to these groups: (optional, admin only)"
       automatically_add_to_groups_required: "This invite also includes access to these groups: (<b>Required</b>, admin only)"
+      add_to_user_role: "This invite adds user to selected user roles: (<b>Required</b>, admin only)"
+
+      user_roles:
+        teacher: "Teacher"
+        student: "Student"
+        mentor: "Mentor"
 
       invite_private:
         title: 'Invite to Message'
@@ -2109,7 +2115,7 @@ en:
           basic: 'Users at Trust Level 1 (Basic User)'
           regular: 'Users at Trust Level 2 (Member)'
           leader: 'Users at Trust Level 3 (Regular)'
-          elder: 'Users at Trust Level 4 (Leader)'
+          elder: 'Users at Trust Level 4 (Leader)'zz
           staff: "Staff"
           admins: 'Admin Users'
           moderators: 'Moderators'

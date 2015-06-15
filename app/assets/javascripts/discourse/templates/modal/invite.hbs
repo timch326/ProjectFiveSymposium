@@ -21,6 +21,8 @@
     {{#if showGroups}}
       <label>{{{groupInstructions}}}</label>
       {{group-selector groupFinder=groupFinder groupNames=groupNames placeholderKey="topic.invite_private.group_name"}}
+      <label>{{{userRoleInstructions}}}</label>
+      {{combo-box name="alias" valueAttribute="value" content=userRolesOptions value=userRole}}
     {{/if}}
   {{/if}}
 </div>

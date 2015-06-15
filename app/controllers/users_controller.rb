@@ -606,8 +606,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
+
+      # this should never be called in our app for med students. users can only join with invitations
+      # can not sign up for an account for them self. 
       params.permit(:name, :email, :password, :username, :active)
-            .merge(ip_address: request.remote_ip, registration_ip_address: request.remote_ip)
+            .merge(ip_address: request.remote_ip, registration_ip_address: request.remote_ip, user_role: "user_controller")
     end
 
     def fail_with(key)

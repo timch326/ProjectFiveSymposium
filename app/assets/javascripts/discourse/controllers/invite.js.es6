@@ -8,6 +8,7 @@ export default ObjectController.extend(Presence, ModalFunctionality, {
   // If this isn't defined, it will proxy to the user model on the preferences
   // page which is wrong.
   emailOrUsername: null,
+  userRole: "teacher",
 
   isAdmin: function(){
     return Discourse.User.currentProp("admin");
@@ -91,6 +92,18 @@ export default ObjectController.extend(Presence, ModalFunctionality, {
             I18n.t('topic.automatically_add_to_groups_optional');
   }.property('isPrivateTopic'),
 
+  userRoleInstructions: function() {
+    return I18n.t('topic.add_to_user_role');
+  }.property(),
+
+  userRolesOptions: function() {
+    return [
+      { name: I18n.t('topic.user_roles.teacher'), value: "teacher" },
+      { name: I18n.t('topic.user_roles.student'), value: "student" },
+      { name: I18n.t('topic.user_roles.mentor'), value: "mentor" } 
+    ];
+  }.property(),
+
   groupFinder(term) {
     return Discourse.Group.findAll({search: term, ignore_automatic: true});
   },
@@ -136,7 +149,7 @@ export default ObjectController.extend(Presence, ModalFunctionality, {
 
       this.setProperties({ saving: true, error: false });
 
-      return this.get('model').createInvite(this.get('emailOrUsername').trim(), groupNames).then(result => {
+      return this.get('model').createInvite(this.get('emailOrUsername').trim(), groupNames, this.get('userRole')).then(result => {
               this.setProperties({ saving: false, finished: true });
               if (!this.get('invitingToTopic')) {
                 Discourse.Invite.findInvitedBy(Discourse.User.current()).then(invite_model => {

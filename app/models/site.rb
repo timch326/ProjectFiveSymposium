@@ -28,7 +28,10 @@ class Site
   def trust_levels
     TrustLevel.all
   end
-
+  
+  def user_roles
+	UserRole.all
+  end
   def groups
     @groups ||= Group.order(:name).map { |g| {:id => g.id, :name => g.name}}
   end
