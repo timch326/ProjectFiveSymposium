@@ -571,6 +571,14 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def set_as_note
+    self.update_attributes(note: true)
+  end
+
+  def is_note
+    temp = Post.find_by(post_id: id)
+    temp.note
+  end
 end
 
 # == Schema Information
@@ -626,6 +634,7 @@ end
 #  via_email               :boolean          default(FALSE), not null
 #  raw_email               :text
 #  public_version          :integer          default(1), not null
+#  note                    :boolean          default(FALSE), not null
 #
 # Indexes
 #
