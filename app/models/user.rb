@@ -129,6 +129,9 @@ class User < ActiveRecord::Base
   scope :not_suspended, -> { where('suspended_till IS NULL OR suspended_till <= ?', Time.zone.now) }
   scope :activated, -> { where(active: true) }
 
+  
+
+
   module NewTopicDuration
     ALWAYS = -1
     LAST_VISIT = -2
@@ -987,7 +990,9 @@ end
 #  disable_jump_reply            :boolean          default(FALSE), not null
 #  edit_history_public           :boolean          default(FALSE), not null
 #  trust_level_locked            :boolean          default(FALSE), not null
+#  user_role                     :string           not null
 #
+
 # Indexes
 #
 #  index_users_on_auth_token      (auth_token)
