@@ -39,6 +39,8 @@ Discourse::Application.configure do
   
   config.action_mailer.perform_deliveries = true
 
+  config.action_mailer.perform_deliveries = true
+
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
 
   config.load_mini_profiler = true
