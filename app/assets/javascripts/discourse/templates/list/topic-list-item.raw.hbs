@@ -53,3 +53,10 @@
 <td class="num views {{topic.viewsHeat}}">{{number topic.views numberKey="views_long"}}</td>
 
 {{raw "list/activity-column" topic=topic class="num" tagName="td"}}
+{{#if topic.isStaffPost}}
+<td  class="staff">{{topic.creator.username}}</td>
+{{else}}
+<td>{{topic.creator.username}}</td>
+{{/if}}
+
+

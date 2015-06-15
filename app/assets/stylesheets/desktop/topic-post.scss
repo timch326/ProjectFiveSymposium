@@ -946,8 +946,16 @@ span.highlighted {
   background-color: dark-light-diff($tertiary, $secondary, 85%, -65%);
 }
 
-.username.new-user a {
-  color: scale-color($primary, $lightness: 70%);
+.username.new-user {
+  border-left: #f7931e solid 4px;
+}
+
+.username.admin {
+  border-left: #4D97D5 solid 4px;
+}
+
+.username.moderator {
+  border-left: #51D54D solid 4px;
 }
 
 .read-state {
