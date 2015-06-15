@@ -52,14 +52,28 @@ module Jobs
         if csv_info[0]
           if (EmailValidator.email_regex =~ csv_info[0])
             # email is valid
-            send_invite(csv_info, $INPUT_LINE_NUMBER)
-            @sent += 1
+            if(validateUserRole(csv_info[1]))
+              send_invite(csv_info, $INPUT_LINE_NUMBER)
+              @sent += 1
+            else
+                # invalid userRole
+              log "Invalid userRole '#{csv_info[1]}' at line number '#{$INPUT_LINE_NUMBER}', must be one of: student, teacher, mentor"
+              @failed += 1
+            end
           else
             # invalid email
             log "Invalid Email '#{csv_info[0]}' at line number '#{$INPUT_LINE_NUMBER}'"
             @failed += 1
           end
         end
+      end
+    end
+
+    def validateUserRole(userRole)
+      if !userRole
+        return false
+      else
+        return ["teacher","student","mentor"].include? userRole
       end
     end
 
@@ -96,10 +110,11 @@ module Jobs
 
     def send_invite(csv_info, csv_line_number)
       email = csv_info[0]
-      group_ids = get_group_ids(csv_info[1], csv_line_number)
-      topic = get_topic(csv_info[2], csv_line_number)
+      user_role = csv_info[1]
+      group_ids = get_group_ids(csv_info[2], csv_line_number)
+      topic = get_topic(csv_info[3], csv_line_number)
       begin
-        Invite.invite_by_email(email, @current_user, topic, group_ids)
+        Invite.invite_by_email(email, user_role, @current_user, topic, group_ids)
       rescue => e
         log "Error inviting '#{email}' -- #{e}"
         @sent -= 1
