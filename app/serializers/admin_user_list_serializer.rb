@@ -23,7 +23,8 @@ class AdminUserListSerializer < BasicUserSerializer
              :suspended_till,
              :suspended,
              :blocked,
-             :time_read
+             :time_read,
+             :user_role
 
   [:days_visited, :posts_read_count, :topics_entered, :post_count].each do |sym|
     attributes sym

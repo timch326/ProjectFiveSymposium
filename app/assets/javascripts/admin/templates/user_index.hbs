@@ -46,7 +46,7 @@
    </div>	
 
   <div class = 'display-row userRole-display'>
-	<div class ='field'>User Role</div>
+	<div class ='field'>{{model.user_role}}</div>
 	 <div class="value">
       {{combo-box content=site.trustLevels value=model.trust_level nameProperty="detailedName"}}
       {{#if model.dirty}}
