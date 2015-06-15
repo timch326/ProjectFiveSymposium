@@ -4,11 +4,13 @@ class AddUserroleToInvites < ActiveRecord::Migration
 
     Invite.reset_column_information
 
-    Invite.all.each do |invite|
-     invite.user_role = "super_admin"
-     invite.save!
-   	end
 
-   change_column :invites, :user_role, :string, :null => false
+
+     execute "update invites set user_role = 'student';" 
+
+	
+
+   
+    change_column :invites, :user_role, :string, :null => false
   end
 end
