@@ -57,7 +57,7 @@ module Jobs
               @sent += 1
             else
                 # invalid userRole
-              log "Invalid userRole '#{csv_info[1]}' at line number '#{$INPUT_LINE_NUMBER}', must be one of: student, teacher, mentor"
+              log "Invalid userRole '#{csv_info[1]}' at line number '#{$INPUT_LINE_NUMBER}', must be one of: student, teacher, mentor. Email invite is not sent."
               @failed += 1
             end
           else
