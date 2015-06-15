@@ -52,6 +52,7 @@ class NewPostManager
 
   def perform
 
+    puts "in perform method\n\n\n\n\n"
     # We never queue private messages
     return perform_create_post if @args[:archetype] == Archetype.private_message
     if args[:topic_id] && Topic.where(id: args[:topic_id], archetype: Archetype.private_message).exists?
@@ -90,9 +91,11 @@ class NewPostManager
   end
 
   def perform_create_post
+    puts "in perform_create_post\n\n\n\n\n"
     result = NewPostResult.new(:create_post)
 
     creator = PostCreator.new(@user, @args)
+    puts "before create method, ", creator.errors.blank?
     post = creator.create
     result.check_errors_from(creator)
 
@@ -102,6 +105,7 @@ class NewPostManager
       @user.flag_linked_posts_as_spam if creator.spam?
     end
 
+    puts "leaving perform create post\n\n\n\n\n"
     result
   end
 

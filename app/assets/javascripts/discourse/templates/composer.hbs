@@ -60,11 +60,13 @@
               {{/unless}}
 
             </div>
+
+              <div>
+                {{input type="checkbox" checked=model.is_note}}
+                {{i18n 'composer.is_note'}}
+              </div>
           {{/if}}
-          <div>
-            {{input type="checkbox" checked=model.is_note}}
-            {{i18n 'composer.is_note'}}
-          </div>
+
           {{plugin-outlet "composer-fields"}}
         </div>
 

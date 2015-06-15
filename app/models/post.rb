@@ -571,14 +571,6 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def set_as_note
-    self.update_attributes(note: true)
-  end
-
-  def is_note
-    temp = Post.find_by(post_id: id)
-    temp.note
-  end
 end
 
 # == Schema Information

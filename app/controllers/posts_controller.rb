@@ -88,7 +88,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    puts "hello world\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     @manager_params = create_params
+    puts @manager_params
+    puts "\n\n\n\n\n", params
     manager = NewPostManager.new(current_user, @manager_params)
 
     if is_api?
@@ -101,7 +104,10 @@ class PostsController < ApplicationController
       backwards_compatible_json(parsed_payload, parsed_payload['success'])
     else
       result = manager.perform
+      puts "result:" ,result
+      puts result.success?
       json = serialize_data(result, NewPostResultSerializer, root: false)
+      puts "post searlize data" , result.success?
       backwards_compatible_json(json, result.success?)
     end
   end
@@ -416,7 +422,8 @@ class PostsController < ApplicationController
       :category,
       :target_usernames,
       :reply_to_post_number,
-      :auto_track
+      :auto_track,
+      :is_note
     ]
 
     # param munging for WordPress

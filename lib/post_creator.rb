@@ -51,6 +51,8 @@ class PostCreator
   def initialize(user, opts)
     # TODO: we should reload user in case it is tainted, should take in a user_id as opposed to user
     # If we don't do this we introduce a rather risky dependency
+    puts "AT START OF INITALIZE", opts
+    puts "initalize error?", errors.blank?
     @user = user
     @opts = opts || {}
     @spam = false
@@ -110,6 +112,9 @@ class PostCreator
   end
 
   def create
+    puts "AT START OF CREATE", valid?
+    puts "error?", errors.blank?
+    puts "errors", errors
     if valid?
       transaction do
         create_topic
@@ -226,9 +231,11 @@ class PostCreator
   private
 
   def create_topic
+    puts "At start of create topic", @topic
     return if @topic
     begin
       topic_creator = TopicCreator.new(@user, guardian, @opts)
+      puts "inside create topic, opts values", @opts
       @topic = topic_creator.create
     rescue ActiveRecord::Rollback
       add_errors_from(topic_creator)
