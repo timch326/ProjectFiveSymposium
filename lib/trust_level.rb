@@ -11,7 +11,7 @@ class TrustLevel
     def [](level)
       raise InvalidTrustLevel if !valid?(level)
       level
-    end
+    z
 
     def levels
       @levels ||= Enum.new(:newuser, :basic, :regular, :leader, :elder, start: 0)

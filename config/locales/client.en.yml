@@ -2109,7 +2109,7 @@ en:
           basic: 'Users at Trust Level 1 (Basic User)'
           regular: 'Users at Trust Level 2 (Member)'
           leader: 'Users at Trust Level 3 (Regular)'
-          elder: 'Users at Trust Level 4 (Leader)'
+          elder: 'Users at Trust Level 4 (Leader)'zz
           staff: "Staff"
           admins: 'Admin Users'
           moderators: 'Moderators'
