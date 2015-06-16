@@ -13,12 +13,9 @@ const Topic = RestModel.extend({
     }
   }.property('posters', 'posters.@each'),
 
-  isStaffPost: function() {
+  userRole: function() {
     var blob = this.get('creator');
-    alert(blob.username);
-    var staff = blob.get('staff');
-    alert(staff);
-    return this.get('creator').get('staff');
+    return this.get('creator').get('user_role');
   }.property('creator'),
 
   // returns createdAt if there's no bumped date

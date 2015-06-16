@@ -1,5 +1,5 @@
 class BasicUserSerializer < ApplicationSerializer
-  attributes :id, :username, :uploaded_avatar_id, :avatar_template, :admin, :moderator
+  attributes :id, :username, :uploaded_avatar_id, :avatar_template, :user_role
 
   def include_name?
     SiteSetting.enable_names?
@@ -17,12 +17,8 @@ class BasicUserSerializer < ApplicationSerializer
     object[:user] || object
   end
 
-  def admin
-    user.admin
-  end
-
-  def moderator
-    user.moderator
+  def user_role
+    user.user_role
   end
 
   # def staff
@@ -36,7 +32,7 @@ class BasicUserSerializer < ApplicationSerializer
   # def moderator
   #   object[:moderator] || object
   # end
-  
+
 
   # def admin
   #   puts "ARGHHHHHHadmin"
