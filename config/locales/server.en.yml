@@ -189,6 +189,7 @@ en:
       everyone: "everyone"
       admins: "admins"
       moderators: "moderators"
+      teachers: "teachers"
       staff: "staff"
       trust_level_0: "trust_level_0"
       trust_level_1: "trust_level_1"

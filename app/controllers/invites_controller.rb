@@ -35,6 +35,12 @@ class InvitesController < ApplicationController
 
     group_ids = Group.lookup_group_ids(params)
 
+    # if user is a teacher, add to Teachers auto group
+    if params[:user_role] == "teacher"
+      teacher_group = Group.lookup_group("teachers")
+      group_ids.push(teacher_group.id)
+    end
+
     guardian.ensure_can_invite_to_forum!(group_ids)
 
     invite_exists = Invite.where(email: params[:email], invited_by_id: current_user.id).first

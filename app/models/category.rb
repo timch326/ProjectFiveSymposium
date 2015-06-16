@@ -279,8 +279,18 @@ SQL
   def apply_permissions
     if @permissions
       category_groups.destroy_all
+      teacher_included = false
+      teacher_group = Group::AUTO_GROUPS[:teachers]
       @permissions.each do |group_id, permission_type|
+        if group_id == teacher_group # check if teacher is included in the list of groups
+          teacher_included = true
+        end
         category_groups.build(group_id: group_id, permission_type: permission_type)
+      end
+      # if teacher is not included, and permissions is not set to everyone
+      # add Teachers group to permissions
+      if !teacher_included && @permissions.length != 0
+        category_groups.build(group_id: teacher_group, permission_type: CategoryGroup.permission_types[:full])
       end
       @permissions = nil
     end
