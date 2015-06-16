@@ -125,15 +125,10 @@ class TopicCreator
   end
 
   def save_topic(topic)
-    puts "In save topics"
     topic.disable_rate_limits! if @opts[:skip_validations]
-    puts "After disable_rate", @opts[:is_note]
     unless topic.save(validate: !@opts[:skip_validations])
-    puts "Inside unless"
       rollback_from_errors!(topic)
-    puts "after rollback"
     end
-    puts "\n\n\n\n\n\nLeaving save topic\n\n\n\n"
   end
 
   def add_users(topic, usernames)

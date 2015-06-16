@@ -91,11 +91,9 @@ class NewPostManager
   end
 
   def perform_create_post
-    puts "in perform_create_post\n\n\n\n\n"
     result = NewPostResult.new(:create_post)
 
     creator = PostCreator.new(@user, @args)
-    puts "before create method, ", creator.errors.blank?
     post = creator.create
     result.check_errors_from(creator)
 
@@ -105,7 +103,6 @@ class NewPostManager
       @user.flag_linked_posts_as_spam if creator.spam?
     end
 
-    puts "leaving perform create post\n\n\n\n\n"
     result
   end
 

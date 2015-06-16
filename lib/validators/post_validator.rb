@@ -5,23 +5,14 @@ class Validators::PostValidator < ActiveModel::Validator
   def validate(record)
     presence(record)
     unless Discourse.static_doc_topic_ids.include?(record.topic_id) && record.acting_user.try(:admin?)
-      puts "\n\n\nstart post validator"
       stripped_length(record)
-      puts "after stripped length", record.errors.blank?
       #raw_quality(record)
-      puts "after raw quality", record.errors.blank?
       max_posts_validator(record)
-      puts "after post", record.errors.blank?
       max_mention_validator(record)
-      puts "after max mention", record.errors.blank?
       max_images_validator(record)
-      puts "after max images", record.errors.blank?
       max_attachments_validator(record)
-      puts "after max attachment", record.errors.blank?
       max_links_validator(record)
-      puts "after max links", record.errors.blank?
       unique_post_validator(record)
-      puts "after unique post, end", record.errors.blank?
     end
   end
 

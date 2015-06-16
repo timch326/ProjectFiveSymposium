@@ -88,10 +88,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    puts "hello world\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     @manager_params = create_params
-    puts @manager_params
-    puts "\n\n\n\n\n", params
     manager = NewPostManager.new(current_user, @manager_params)
 
     if is_api?
@@ -104,10 +101,7 @@ class PostsController < ApplicationController
       backwards_compatible_json(parsed_payload, parsed_payload['success'])
     else
       result = manager.perform
-      puts "result:" ,result
-      puts result.success?
       json = serialize_data(result, NewPostResultSerializer, root: false)
-      puts "post searlize data" , result.success?
       backwards_compatible_json(json, result.success?)
     end
   end
@@ -415,6 +409,13 @@ class PostsController < ApplicationController
   end
 
   def create_params
+
+    if params[:is_note]
+      #do nothing, is_note has a value
+    else
+      params[:is_note] = false
+    end
+
     permitted = [
       :raw,
       :topic_id,
