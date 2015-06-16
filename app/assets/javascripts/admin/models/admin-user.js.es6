@@ -160,7 +160,12 @@ const AdminUser = Discourse.User.extend({
     ];
 	}.property(),	
   
-  
+  canChangeUserRole: function() {
+    const role = this.get('user_role');
+    return  role == "teacher" ||role == "student" || role == "mentor";
+  }.property('user_role'),
+
+
   saveTrustLevel() {
     return Discourse.ajax("/admin/users/" + this.id + "/trust_level", {
       type: 'PUT',
