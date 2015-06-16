@@ -15,8 +15,13 @@ const Topic = RestModel.extend({
 
   userRole: function() {
     var blob = this.get('creator');
-    return this.get('creator').get('user_role');
-  }.property('creator'),
+    if (blob) {
+      return this.get('creator').get('user_role');
+    } else if (this.get('user')) {
+      return this.get('user').user_role;
+    }
+    return ''
+  }.property('creator', 'user'),
 
   // returns createdAt if there's no bumped date
   bumpedAt: function() {

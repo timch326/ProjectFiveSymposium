@@ -97,32 +97,31 @@
       padding: 15px 5px;
     }
   }
-
-  .user_role {
-      padding: 2px;
-      padding-left: 3px;
-      padding-right: 4px;
-      font-size: 0.857em;
-      background-color: #EAEAEA;
-      color: #909090;
-  }
-  .super_admin {
-    border-left: $super_admin solid 4px;
-  }
-
-  .teacher {
-    border-left: $teacher solid 4px;
-  }
-
-  .student {
-    border-left: $student solid 4px;
-  }
-
-  .mentor {
-    border-left: $mentor solid 4px;
-  }
 }
 
+.user_role {
+    padding: 2px;
+    padding-left: 3px;
+    padding-right: 4px;
+    font-size: 0.857em;
+    background-color: #EAEAEA;
+    color: #646464;
+}
+.super_admin {
+  border-left: $super_admin solid 4px;
+}
+
+.teacher {
+  border-left: $teacher solid 4px;
+}
+
+.student {
+  border-left: $student solid 4px;
+}
+
+.mentor {
+  border-left: $mentor solid 4px;
+}
 
 .topic-list.categories {
 

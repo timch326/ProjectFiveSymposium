@@ -18,10 +18,7 @@ const PosterNameComponent = Em.Component.extend({
       var linkClass = 'username',
           name = post.get('name');
 
-      if (post.get('staff')) { linkClass += ' staff'; }
-      if (post.get('admin')) { linkClass += ' admin'; }
-      if (post.get('moderator')) { linkClass += ' moderator'; }
-      if (post.get('new_user')) { linkClass += ' new-user'; }
+      // linkClass += ' ' + post.get('user_role');
 
       if (!Em.isEmpty(primaryGroupName)) {
         linkClass += ' ' + primaryGroupName;
@@ -53,8 +50,11 @@ const PosterNameComponent = Em.Component.extend({
         } else {
           buffer.push("<a href='/groups/" + post.get('primary_group_name') + "' class='user-group'>" + title + "</a>");
         }
-        buffer.push("</span>");
+        buffer.push("</span>")
       }
+
+      var userRole = post.get('user_role');
+      buffer.push("<span><a href='" + url + "' class='user_role  " + userRole + "' title='" + I18n.t('topic.user_roles.' + userRole) + " Post'>" + I18n.t('topic.user_roles.' + userRole) + "</a></span>");
 
       PosterNameComponent.trigger('renderedName', buffer, post);
     }

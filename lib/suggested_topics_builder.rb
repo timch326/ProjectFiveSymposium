@@ -1,4 +1,5 @@
 require_dependency 'topic_list'
+require_dependency 'avatar_lookup'
 
 class SuggestedTopicsBuilder
 
@@ -27,6 +28,18 @@ class SuggestedTopicsBuilder
     end
 
     results = results.to_a.reject { |topic| @category_topic_ids.include?(topic.id) }
+    user_ids = []
+    @results.each do |ft|
+      user_ids << ft.user_id << ft.last_post_user_id << ft.featured_user_ids << ft.allowed_user_ids
+    end
+
+    avatar_lookup = AvatarLookup.new(user_ids)
+
+    @results.each do |ft|
+      ft.posters = ft.posters_summary(avatar_lookup: avatar_lookup)
+      ft.participants = ft.participants_summary(avatar_lookup: avatar_lookup, user: @current_user)
+      ft.topic_list = self
+    end
 
     unless results.empty?
       # Keep track of the ids we've added
