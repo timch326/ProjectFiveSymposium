@@ -946,22 +946,6 @@ span.highlighted {
   background-color: dark-light-diff($tertiary, $secondary, 85%, -65%);
 }
 
-.username.teacher {
-  border-left: #f7931e solid 4px;
-}
-
-.username.mentor {
-  border-left: #4D97D5 solid 4px;
-}
-
-.username.student {
-  border-left: #51D54D solid 4px;
-}
-
-.username.super_admin {
-  border-left: #ff0000 solid 4px;
-}
-
 .read-state {
   color: scale-color($tertiary, $lightness: 50%);
   position: absolute;

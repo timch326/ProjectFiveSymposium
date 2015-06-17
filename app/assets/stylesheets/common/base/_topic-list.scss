@@ -113,22 +113,22 @@ a.user_role:hover {
 }
 
 .super_admin {
-  border-left: $super_admin solid 4px;
+  border-left: #ff0000 solid 4px;
   background-color: #EAEAEA;
 }
 
 .teacher {
-  border-left: $teacher solid 4px;
+  border-left: #f7931e solid 4px;
   background-color: #EAEAEA;
 }
 
 .student {
-  border-left: $student solid 4px;
+  border-left: #51D54D solid 4px;
   background-color: #EAEAEA;
 }
 
 .mentor {
-  border-left: $mentor solid 4px;
+  border-left: #4D97D5 solid 4px;
   background-color: #EAEAEA;
 }
 
