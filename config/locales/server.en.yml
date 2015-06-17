@@ -190,6 +190,7 @@ en:
       admins: "admins"
       moderators: "moderators"
       teachers: "teachers"
+      mentors: "mentors"
       staff: "staff"
       trust_level_0: "trust_level_0"
       trust_level_1: "trust_level_1"

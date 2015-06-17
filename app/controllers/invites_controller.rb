@@ -35,10 +35,16 @@ class InvitesController < ApplicationController
 
     group_ids = Group.lookup_group_ids(params)
 
-    # if user is a teacher, add to Teachers auto group
+    # if user is a teacher, add to teachers auto group
     if params[:user_role] == "teacher"
       teacher_group = Group.lookup_group("teachers")
       group_ids.push(teacher_group.id)
+    end
+
+    # if user is a mentor, add to mentors auto group
+    if params[:user_role] == "mentor"
+      mentor_group = Group.lookup_group("mentors")
+      group_ids.push(mentor_group.id)
     end
 
     guardian.ensure_can_invite_to_forum!(group_ids)

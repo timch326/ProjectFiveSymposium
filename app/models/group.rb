@@ -24,6 +24,7 @@ class Group < ActiveRecord::Base
     :moderators => 2,
     :staff => 3,
     :teachers => 4,
+    :mentors => 5,
     :trust_level_0 => 10,
     :trust_level_1 => 11,
     :trust_level_2 => 12,
@@ -97,6 +98,8 @@ class Group < ActiveRecord::Base
                   "SELECT u.id FROM users u WHERE NOT u.admin AND NOT u.moderator"
                 when :teachers
                   "SELECT u.id FROM users u WHERE NOT u.user_role LIKE 'teacher'"
+                when :mentors
+                  "SELECT u.id FROM users u WHERE NOT u.user_role LIKE 'mentor'"
                 when :trust_level_0, :trust_level_1, :trust_level_2, :trust_level_3, :trust_level_4
                   "SELECT u.id FROM users u WHERE u.trust_level < #{id - 10}"
                 end
@@ -123,6 +126,8 @@ class Group < ActiveRecord::Base
                  "SELECT u.id FROM users u WHERE u.moderator OR u.admin"
                when :teachers
                  "SELECT u.id FROM users u WHERE u.user_role LIKE 'teacher'"
+               when :mentors
+                 "SELECT u.id FROM users u WHERE u.user_role LIKE 'mentor'"
                when :trust_level_1, :trust_level_2, :trust_level_3, :trust_level_4
                  "SELECT u.id FROM users u WHERE u.trust_level >= #{id-10}"
                when :trust_level_0
