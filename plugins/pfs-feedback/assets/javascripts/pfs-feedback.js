@@ -6,8 +6,9 @@
     title: 'Provide some feedback to the posted question',
 
     clicked: function () {
-      console.log(this.get('topic'));
-      alert(this.get('topic.title'));
+      alert(this.get(topic.id));
+      console.log(this.get('topic').id);
+      this.get('topic').addFeedback('SOME TYPE', 'someid');
     },
 
     dropDownContent: function () {
@@ -15,25 +16,25 @@
         {
           id: 'helpful-science',
           title: "Useful Scientific Question",
-          description: 'Insert some interesting description here',
+          description: 'This question addresses some basic scientific knowledge.',
           styleClasses: 'fa fa-flask'
         },
         {
           id: 'helpful-family',
           title: 'Useful for Understanding Family and Patient Perspectives',
-          description: 'Note that this is hardcoded and not using the internationalization components',
+          description: 'This question helps readers understand the perspective of family and patients.',
           styleClasses: 'fa fa-users'
         },
         {
           id: 'helpful-professional',
           title: 'Useful Interprofessional and Health System Question',
-          description: 'Note that this is hardcoded and not using the internationalization components',
+          description: 'This questions improves understanding of interprofessional and health care system relationships.',
           styleClasses: 'fa fa-user-md'
         },
         {
           id: 'outstanding',
           title: 'Outstanding Question',
-          description: 'Note that this is hardcoded and not using the internationalization components',
+          description: 'This question is very well thought.',
           styleClasses: 'fa fa-star'
         }
       ];
