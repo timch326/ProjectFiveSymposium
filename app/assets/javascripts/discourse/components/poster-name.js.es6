@@ -54,7 +54,7 @@ const PosterNameComponent = Em.Component.extend({
       }
 
       var userRole = post.get('user_role');
-      buffer.push("<span><a href='" + url + "' class='user_role  " + userRole + "' title='" + I18n.t('topic.user_roles.' + userRole) + " Post'>" + I18n.t('topic.user_roles.' + userRole) + "</a></span>");
+      buffer.push("<span><a class='user_role  " + userRole + "' title='" + I18n.t('topic.user_roles.' + userRole) + " Post'>" + I18n.t('topic.user_roles.' + userRole) + "</a></span>");
 
       PosterNameComponent.trigger('renderedName', buffer, post);
     }
