@@ -8,15 +8,14 @@ const Topic = RestModel.extend({
   creator: function() {
     var posters = this.get("posters");
     if(posters && posters[0]){
-      var thing = posters[0].user;
       return posters[0].user;
     }
   }.property('posters', 'posters.@each'),
 
   userRole: function() {
-    var blob = this.get('creator');
-    if (blob) {
-      return this.get('creator').get('user_role');
+    var user = this.get('creator');
+    if (user) {
+      return user.get('user_role');
     } else if (this.get('user')) {
       return this.get('user').user_role;
     }
