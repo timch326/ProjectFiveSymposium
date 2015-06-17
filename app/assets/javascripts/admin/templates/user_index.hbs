@@ -37,7 +37,7 @@
     <div class="value">
       {{#if model.canChangeUserRole}}
 
-        {{combo-box name="useRoleChange" content=model.userRolesOptions value= model.user_role}}
+        {{combo-box name="useRoleChange" content=model.userRolesOptions valueAttribute="value" value=model.user_role}}
         {{#if model.dirty}}
           <div>
             <button class='btn ok no-text' {{action "saveTrustLevel" target="content"}}>{{fa-icon "check"}}</button>
