@@ -9,6 +9,7 @@
 //= require ./discourse/lib/notification-levels
 //= require ./discourse/lib/app-events
 //= require ./discourse/helpers/i18n
+//= require ./discourse/helpers/user-role-i18n
 //= require ./discourse/helpers/fa-icon
 //= require ./discourse/lib/ember_compat_handlebars
 //= require ./discourse/lib/computed

@@ -1118,6 +1118,8 @@ en:
         teacher: "Teacher"
         student: "Student"
         mentor: "Mentor"
+        super_admin: "Admin"
+        false: ""
 
       invite_private:
         title: 'Invite to Message'

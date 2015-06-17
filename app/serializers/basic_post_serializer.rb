@@ -3,6 +3,7 @@ class BasicPostSerializer < ApplicationSerializer
   attributes :id,
              :name,
              :username,
+             :user_role,
              :avatar_template,
              :uploaded_avatar_id,
              :created_at,
@@ -15,6 +16,10 @@ class BasicPostSerializer < ApplicationSerializer
 
   def username
     object.user.try(:username)
+  end
+
+  def user_role
+    object.user.try(:user_role)
   end
 
   def avatar_template
