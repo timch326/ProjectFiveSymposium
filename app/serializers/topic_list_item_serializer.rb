@@ -9,13 +9,22 @@ class TopicListItemSerializer < ListableTopicSerializer
              :op_like_count,
              :pinned_globally,
              :bookmarked_post_numbers,
-             :liked_post_numbers
+             :liked_post_numbers,
+             :is_note
 
   has_many :posters, serializer: TopicPosterSerializer, embed: :objects
   has_many :participants, serializer: TopicPosterSerializer, embed: :objects
 
   def posters
     object.posters || []
+  end
+
+  def topic
+    object[:topic] || object
+  end
+
+  def is_note
+    topic.note
   end
 
   def op_like_count

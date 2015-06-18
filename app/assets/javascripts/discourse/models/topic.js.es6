@@ -7,6 +7,7 @@ const Topic = RestModel.extend({
 
   creator: function() {
     var posters = this.get("posters");
+    console.log(this.is_note);
     if(posters && posters[0]){
       return posters[0].user;
     }
@@ -21,6 +22,13 @@ const Topic = RestModel.extend({
     }
     return ''
   }.property('creator', 'user'),
+
+  isNote: function() {
+    console.log("HI, WE'RE IN HERE NOW!!!!");
+    var topic = this.get('topic');
+    console.log(topic.is_note);
+    return topic.is_note;
+  }.property('topic', 'is_note'),
 
   // returns createdAt if there's no bumped date
   bumpedAt: function() {
