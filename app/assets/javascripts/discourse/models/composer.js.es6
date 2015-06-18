@@ -481,6 +481,7 @@ const Composer = RestModel.extend({
       username: user.get('username'),
       user_id: user.get('id'),
       user_title: user.get('title'),
+      user_role: user.get('user_role'),
       uploaded_avatar_id: user.get('uploaded_avatar_id'),
       user_custom_fields: user.get('custom_fields'),
       post_type: this.site.get('post_types.regular'),

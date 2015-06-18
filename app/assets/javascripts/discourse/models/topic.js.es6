@@ -7,6 +7,7 @@ const Topic = RestModel.extend({
 
   creator: function() {
     var posters = this.get("posters");
+    console.log(this.is_note);
     if(posters && posters[0]){
       return posters[0].user;
     }
@@ -38,6 +39,10 @@ const Topic = RestModel.extend({
       return this.get('createdAt');
     }
   }.property('bumped_at', 'createdAt'),
+
+  creatorTitle: function() {
+    return 'Creator';
+  }.property('creator'),
 
   bumpedAtTitle: function() {
     return I18n.t('first_post') + ": " + Discourse.Formatter.longDate(this.get('createdAt')) + "\n" +
