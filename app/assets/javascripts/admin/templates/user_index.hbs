@@ -52,18 +52,7 @@
     </div>
    </div>	
 
-  <div class = 'display-row userRole-display'>
-	<div class ='field'>{{model.user_role}}</div>
-	 <div class="value">
-      {{combo-box content=site.trustLevels value=model.trust_level nameProperty="detailedName"}}
-      {{#if model.dirty}}
-        <div>
-          <button class='btn ok no-text' {{action "saveTrustLevel" target="content"}}>{{fa-icon "check"}}</button>
-          <button class='btn cancel no-text' {{action "restoreTrustLevel" target="content"}}>{{fa-icon "times"}}</button>
-        </div>
-      {{/if}}
-	 </div>
-  </div>
+
 
   {{#if canCheckEmails}}
     <div class='display-row email'>
