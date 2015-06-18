@@ -775,6 +775,7 @@ en:
       uploading: "Uploading..."
       show_preview: 'show preview &raquo;'
       hide_preview: '&laquo; hide preview'
+      is_note: 'Make this a Note'
 
       quote_post_title: "Quote whole post"
       bold_title: "Strong"

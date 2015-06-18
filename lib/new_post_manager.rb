@@ -52,6 +52,7 @@ class NewPostManager
 
   def perform
 
+    puts "in perform method\n\n\n\n\n"
     # We never queue private messages
     return perform_create_post if @args[:archetype] == Archetype.private_message
     if args[:topic_id] && Topic.where(id: args[:topic_id], archetype: Archetype.private_message).exists?

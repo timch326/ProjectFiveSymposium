@@ -626,6 +626,7 @@ end
 #  via_email               :boolean          default(FALSE), not null
 #  raw_email               :text
 #  public_version          :integer          default(1), not null
+#  note                    :boolean          default(FALSE), not null
 #
 # Indexes
 #

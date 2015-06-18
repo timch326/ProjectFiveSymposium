@@ -58,8 +58,15 @@
                 {{/if}}
                 {{render "additional-composer-buttons" model}}
               {{/unless}}
+
             </div>
+
+              <div>
+                {{input type="checkbox" checked=model.is_note}}
+                {{i18n 'composer.is_note'}}
+              </div>
           {{/if}}
+
           {{plugin-outlet "composer-fields"}}
         </div>
 
