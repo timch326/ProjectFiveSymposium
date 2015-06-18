@@ -38,10 +38,10 @@
       {{#if model.canChangeUserRole}}
 
         {{combo-box name="useRoleChange" content=model.userRolesOptions valueAttribute="value" value=model.user_role}}
-        {{#if model.dirty}}
+        {{#if model.dirtyUserRole}}
           <div>
-            <button class='btn ok no-text' {{action "saveTrustLevel" target="content"}}>{{fa-icon "check"}}</button>
-            <button class='btn cancel no-text' {{action "restoreTrustLevel" target="content"}}>{{fa-icon "times"}}</button>
+            <button class='btn ok no-text' {{action "saveUserRole" target="content"}}>{{fa-icon "check"}}</button>
+            <button class='btn cancel no-text' {{action "restoreUserRole" target="content"}}>{{fa-icon "times"}}</button>
           </div>
         {{/if}}
 

@@ -91,6 +91,7 @@ Discourse::Application.routes.draw do
       put "block"
       put "unblock"
       put "trust_level"
+      put "user_role"
       put "trust_level_lock"
       put "primary_group"
       post "groups" => "users#add_group", constraints: AdminConstraint.new

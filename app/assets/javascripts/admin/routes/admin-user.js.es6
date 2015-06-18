@@ -14,6 +14,8 @@ export default Discourse.Route.extend({
   afterModel(adminUser) {
     return adminUser.loadDetails().then(function () {
       adminUser.setOriginalTrustLevel();
+      adminUser.setOriginalUserRole();
+
       return adminUser;
     });
   }

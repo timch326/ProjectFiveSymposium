@@ -144,9 +144,14 @@ const AdminUser = Discourse.User.extend({
     this.set('originalTrustLevel', this.get('trust_level'));
   },
  
-
+  setOriginalUserRole() {
+    this.set('originalUserRole', this.get('user_role'));
+  },
   
   dirty: Discourse.computed.propertyNotEqual('originalTrustLevel', 'trustLevel.id'),
+
+  dirtyUserRole: Discourse.computed.propertyNotEqual('originalUserRole', 'user_role'),
+
 
   userRoleInstructions: function() {
     return I18n.t('topic.add_user_role_title');
@@ -164,6 +169,28 @@ const AdminUser = Discourse.User.extend({
     const role = this.get('user_role');
     return  role == "teacher" ||role == "student" || role == "mentor";
   }.property('user_role'),
+
+  saveUserRole() {
+    return Discourse.ajax("/admin/users/" + this.id + "/user_role", {
+      type: 'PUT',
+      data: { new_user_role: this.get('user_role') }
+    }).then(function() {
+      window.location.reload();
+    }).catch(function(e) {
+      let error;
+      if (e.responseJSON && e.responseJSON.errors) {
+        error = e.responseJSON.errors[0];
+      }
+      error = error || I18n.t('admin.user.user_role_change_failed', { error: "http: " + e.status + " - " + e.body });
+      bootbox.alert(error);
+    });
+  },
+
+  restoreUserRole() {
+    this.set('user_role', this.get('originalUserRole'));
+  },
+
+
 
 
   saveTrustLevel() {
