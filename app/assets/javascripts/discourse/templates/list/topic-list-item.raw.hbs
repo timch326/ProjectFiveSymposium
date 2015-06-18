@@ -6,7 +6,10 @@
 
 <td class='main-link clearfix' colspan="{{titleColSpan}}">
   {{raw "topic-status" topic=topic}}
+  {{raw "topic-user-role-badges"  url=topic.lastUnreadUrl userRole=topic.userRole}}
   {{topic-link topic}}
+
+  {{!-- <a href='http://google.ca' class='{{topic.userRole}}' title='{{topic.userRole}}'>{{topic.userRole}}</a> --}}
   {{#if controller.showTopicPostBadges}}
     {{raw "topic-post-badges" unread=topic.unread newPosts=topic.displayNewPosts unseen=topic.unseen url=topic.lastUnreadUrl}}
   {{/if}}

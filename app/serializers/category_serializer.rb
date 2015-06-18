@@ -22,7 +22,9 @@ class CategorySerializer < BasicCategorySerializer
         }
       end
       if perms.length == 0 && !object.read_restricted
-        perms << { permission_type: CategoryGroup.permission_types[:full], group_name: :everyone }
+        perms << { permission_type: CategoryGroup.permission_types[:readonly], group_name: :everyone}
+        perms << { permission_type: CategoryGroup.permission_types[:full], group_name: :teachers }
+        perms << { permission_type: CategoryGroup.permission_types[:create_post], group_name: :mentors }
       end
       perms
     end

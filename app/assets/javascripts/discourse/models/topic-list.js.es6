@@ -8,7 +8,6 @@ function topicsFrom(result, store) {
   // Stitch together our side loaded data
   const categories = Discourse.Category.list(),
         users = Model.extractByKey(result.users, Discourse.User);
-
   return result.topic_list.topics.map(function (t) {
     t.category = categories.findBy('id', t.category_id);
     t.posters.forEach(function(p) {

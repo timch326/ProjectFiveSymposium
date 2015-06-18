@@ -97,9 +97,40 @@
       padding: 15px 5px;
     }
   }
-
 }
 
+.user_role {
+    padding: 2px;
+    padding-left: 3px;
+    padding-right: 4px;
+    font-size: 0.857em;
+    color: #646464;
+    cursor:default;
+}
+
+a.user_role:hover {
+      color: #646464;
+}
+
+.super_admin {
+  border-left: #ff0000 solid 4px;
+  background-color: #EAEAEA;
+}
+
+.teacher {
+  border-left: #f7931e solid 4px;
+  background-color: #EAEAEA;
+}
+
+.student {
+  border-left: #51D54D solid 4px;
+  background-color: #EAEAEA;
+}
+
+.mentor {
+  border-left: #4D97D5 solid 4px;
+  background-color: #EAEAEA;
+}
 
 .topic-list.categories {
 
