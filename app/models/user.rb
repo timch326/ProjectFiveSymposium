@@ -568,6 +568,9 @@ class User < ActiveRecord::Base
 
     save
 
+    Group.refresh_automatic_group!(:teachers)
+    Group.refresh_automatic_group!(:mentors)
+
 
 #
 #        @user.transaction do
