@@ -45,12 +45,13 @@ Discourse.DiscoveryCategoriesRoute = Discourse.Route.extend(OpenComposer, ShowFo
   actions: {
     createCategory() {
       const groups = this.site.groups,
+            everyoneName = groups.findBy('id', 0).name,
             teacherName = groups.findBy('id', 4).name,
             mentorName = groups.findBy('id', 5).name;
 
       const model = Discourse.Category.create({
         // by default, teachers have full permission to the new category, and mentors can see and reply
-        color: 'AB9364', text_color: 'FFFFFF', group_permissions: [{group_name: teacherName, permission_type: 1}, {group_name: mentorName, permission_type: 2}],
+        color: 'AB9364', text_color: 'FFFFFF', group_permissions: [{group_name: teacherName, permission_type: 1}, {group_name: mentorName, permission_type: 2}, {group_name: everyoneName, permission_type: 3}],
         available_groups: groups.map(g => g.name),
         allow_badges: true
       });
