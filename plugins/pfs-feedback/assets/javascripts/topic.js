@@ -1,16 +1,15 @@
 Discourse.Topic.reopen({
-  addFeedback: function(feedbackType, userId) {
-    var topic = this;
+  toggleFeedback: function(feedbackType) {
+      var topic = this;
 
-    return Discourse.ajax({
-      url: this.get('url') + '/add_feedback',
+      return Discourse.ajax({
+      url: this.get('url') + '/toggle_feedback',
       type: 'PUT',
-      data: { feedback_type: feedbackType,
-              user_id : userId}
-    }).then(function () {
-      var feedbackCount = topic.get('feedback') || 0;
-      topic.set('feedback', feedbackCount + 1);
-      console.log(topic.feedback);
+      data: { feedback_type: feedbackType}
+    }).then(function (response) {
+        console.log(response);
+        topic.set('feedback', response.feedback);
+        topic.set('feedback_votes', response.feedback_votes);
     });
   }
 });

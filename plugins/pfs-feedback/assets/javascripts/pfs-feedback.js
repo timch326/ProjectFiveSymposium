@@ -5,10 +5,10 @@
     "<span class='caret'></span>",
     title: 'Provide some feedback to the posted question',
 
-    clicked: function () {
-      alert(this.get(topic.id));
-      console.log(this.get('topic').id);
-      this.get('topic').addFeedback('SOME TYPE', 'someid');
+    clicked: function (feedbackType) {
+      console.log(this.get('topic.feedback'));
+      console.log(this.get('topic.feedback_votes'))
+      this.get('topic').toggleFeedback(feedbackType);
     },
 
     dropDownContent: function () {
