@@ -119,11 +119,6 @@ module Jobs
         group_ids.push(teacher_group.id)
       end
 
-      puts "\n\n\n\n\n\n"
-      puts user_role
-      puts "PRINT ====================================="
-      puts "\n\n\n\n\n\n"
-
       # if user is a mentor, add to mentors auto group
       if user_role == "mentor"
         mentor_group = Group.lookup_group("mentors")

@@ -1,7 +1,6 @@
 InviteRedeemer = Struct.new(:invite, :username, :name) do
 
   def redeem
-    puts "\n\n\n\n\n\n\n\n\n\n\nat redeem"
     Invite.transaction do
       if invite_was_redeemed?
         process_invitation
@@ -30,16 +29,10 @@ InviteRedeemer = Struct.new(:invite, :username, :name) do
     end
     available_name = name || available_username
 
-    puts "\n\n\n\nbefore creating user object\n\n\n\n"
-
     user = User.new(email: invite.email, username: available_username, name: available_name, active: true, trust_level: SiteSetting.default_invitee_trust_level, user_role: invite.user_role)
    
     user.save!
   
-    puts "\n\n\n\nuserroles\n\n\n\n"
-    puts user.user_role
-    puts "\n\n\n\nafter creating user object\n\n\n\n"
-
     user
   end
 
@@ -114,7 +107,6 @@ InviteRedeemer = Struct.new(:invite, :username, :name) do
   end
 
   def send_password_instructions
-    puts "at send password instructions"
     if !SiteSetting.enable_sso && SiteSetting.enable_local_logins && !invited_user.has_password?
       Jobs.enqueue(:invite_password_instructions_email, username: invited_user.username)
     end
@@ -126,7 +118,6 @@ InviteRedeemer = Struct.new(:invite, :username, :name) do
   end
 
   def delete_duplicate_invites
-    puts "at delete duplicate invites"
     Invite.where('invites.email = ? AND redeemed_at IS NULL AND invites.id != ?', invite.email, invite.id).delete_all
   end
 end
