@@ -1,0 +1,26 @@
+<p class="ember-view topic-map">
+    <section class="map">
+        <ul class="clearfix">
+            <li>
+                <a>
+                    <h4>Feedback</h4>
+                    <i class="fa fa-comment"></i>
+                    <span>
+                        {{#if model.feedback.voter_count}}
+                          {{model.feedback.voter_count}}
+                        {{else}}
+                          0
+                        {{/if}}
+                    </span>
+                </a>
+            </li>
+
+          {{#each feedback in model.feedbackResults}}
+              <li class="secondary">
+                  <span><i class="{{feedback.styleClasses}}"></i></span>
+                  <h4>{{feedback.votes}}</h4>
+              </li>
+          {{/each}}
+        </ul>
+    </section>
+</p>
