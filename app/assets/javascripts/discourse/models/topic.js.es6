@@ -5,6 +5,23 @@ const Topic = RestModel.extend({
   errorTitle: null,
   errorLoading: false,
 
+  creator: function() {
+    var posters = this.get("posters");
+    if(posters && posters[0]){
+      return posters[0].user;
+    }
+  }.property('posters', 'posters.@each'),
+
+  userRole: function() {
+    var user = this.get('creator');
+    if (user) {
+      return user.get('user_role');
+    } else if (this.get('user')) {
+      return this.get('user').user_role;
+    }
+    return ''
+  }.property('creator', 'user'),
+
   // returns createdAt if there's no bumped date
   bumpedAt: function() {
     const bumpedAt = this.get('bumped_at');
@@ -14,6 +31,10 @@ const Topic = RestModel.extend({
       return this.get('createdAt');
     }
   }.property('bumped_at', 'createdAt'),
+
+  creatorTitle: function() {
+    return 'Creator';
+  }.property('creator'),
 
   bumpedAtTitle: function() {
     return I18n.t('first_post') + ": " + Discourse.Formatter.longDate(this.get('createdAt')) + "\n" +

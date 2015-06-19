@@ -1112,12 +1112,15 @@ en:
       inviting: "Inviting..."
       automatically_add_to_groups_optional: "This invite also includes access to these groups: (optional, admin only)"
       automatically_add_to_groups_required: "This invite also includes access to these groups: (<b>Required</b>, admin only)"
+      add_user_role_title: 'User Role'
       add_to_user_role: "This invite adds user to selected user roles: (<b>Required</b>, admin only)"
 
       user_roles:
         teacher: "Teacher"
         student: "Student"
         mentor: "Mentor"
+        super_admin: "Admin"
+        false: ""
 
       invite_private:
         title: 'Invite to Message'
@@ -2217,6 +2220,7 @@ en:
         suspended_explanation: "A suspended user can't log in."
         block_explanation: "A blocked user can't post or start topics."
         trust_level_change_failed: "There was a problem changing the user's trust level."
+        user_role_change_failed: "There was a problem changing the user's role."
         suspend_modal_title: "Suspend User"
         trust_level_2_users: "Trust Level 2 Users"
         trust_level_3_requirements: "Trust Level 3 Requirements"

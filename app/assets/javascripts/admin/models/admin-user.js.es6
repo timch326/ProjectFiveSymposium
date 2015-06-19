@@ -143,8 +143,55 @@ const AdminUser = Discourse.User.extend({
   setOriginalTrustLevel() {
     this.set('originalTrustLevel', this.get('trust_level'));
   },
-
+ 
+  setOriginalUserRole() {
+    this.set('originalUserRole', this.get('user_role'));
+  },
+  
   dirty: Discourse.computed.propertyNotEqual('originalTrustLevel', 'trustLevel.id'),
+
+  dirtyUserRole: Discourse.computed.propertyNotEqual('originalUserRole', 'user_role'),
+
+
+  userRoleInstructions: function() {
+    return I18n.t('topic.add_user_role_title');
+  }.property(),
+
+  userRolesOptions: function() {
+    return [
+      { name: I18n.t('topic.user_roles.teacher'), value: "teacher" },
+      { name: I18n.t('topic.user_roles.student'), value: "student" },
+      { name: I18n.t('topic.user_roles.mentor'), value: "mentor" } 
+    ];
+	}.property(),	
+  
+  canChangeUserRole: function() {
+    const role = this.get('user_role');
+    return  role == "teacher" ||role == "student" || role == "mentor";
+  }.property('user_role'),
+
+  saveUserRole() {
+    return Discourse.ajax("/admin/users/" + this.id + "/user_role", {
+      type: 'PUT',
+      data: { new_user_role: this.get('user_role') }
+    }).then(function() {
+      window.location.reload();
+    }).catch(function(e) {
+      let error;
+      if (e.responseJSON && e.responseJSON.errors) {
+        error = e.responseJSON.errors[0];
+      }
+      error = error || I18n.t('admin.user.user_role_change_failed', { error: "http: " + e.status + " - " + e.body });
+      bootbox.alert(error);
+    });
+  },
+
+  restoreUserRole() {
+    this.set('user_role', this.get('originalUserRole'));
+  },
+
+
+
 
   saveTrustLevel() {
     return Discourse.ajax("/admin/users/" + this.id + "/trust_level", {

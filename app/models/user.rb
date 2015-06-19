@@ -557,6 +557,38 @@ class User < ActiveRecord::Base
     Promotion.new(self).change_trust_level!(level, opts)
   end
 
+  def change_user_role!(new_user_role, opts=nil)
+
+
+    admin = opts && opts[:log_action_for]
+
+
+    update_column(:user_role, new_user_role)
+
+
+    save
+
+    Group.refresh_automatic_group!(:teachers)
+    Group.refresh_automatic_group!(:mentors)
+
+
+#
+#        @user.transaction do
+#      if admin
+#        StaffActionLogger.new(admin).log_trust_level_change(@user, old_level, new_level)
+#     else
+#        UserHistory.create!( action: UserHistory.actions[:auto_trust_level_change],
+#                             target_user_id: @user.id,
+#                             previous_value: old_level,
+#                             new_value: new_level)
+#      end
+#      @user.save!
+
+
+
+  end
+
+
   def treat_as_new_topic_start_date
     duration = new_topic_duration_minutes || SiteSetting.new_topic_duration_minutes
     [case duration

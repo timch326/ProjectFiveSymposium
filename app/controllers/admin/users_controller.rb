@@ -23,7 +23,8 @@ class Admin::UsersController < Admin::AdminController
                                     :primary_group,
                                     :generate_api_key,
                                     :revoke_api_key,
-                                    :anonymize]
+                                    :anonymize,
+                                    :user_role]
 
   def index
     users = ::AdminUserIndexQuery.new(params).find_users
@@ -155,6 +156,19 @@ class Admin::UsersController < Admin::AdminController
     end
 
     @user.change_trust_level!(level, log_action_for: current_user)
+
+    render_serialized(@user, AdminUserSerializer)
+  rescue Discourse::InvalidAccess => e
+    render_json_error(e.message)
+  end
+
+  def user_role
+    #todo implement chech for change user role - super admin only
+    guardian.ensure_can_change_user_role!(@user)
+    new_user_role = params[:new_user_role]
+
+
+    @user.change_user_role!(new_user_role, log_action_for: current_user)
 
     render_serialized(@user, AdminUserSerializer)
   rescue Discourse::InvalidAccess => e

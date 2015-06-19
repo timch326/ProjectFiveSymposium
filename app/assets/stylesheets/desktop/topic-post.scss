@@ -946,10 +946,6 @@ span.highlighted {
   background-color: dark-light-diff($tertiary, $secondary, 85%, -65%);
 }
 
-.username.new-user a {
-  color: scale-color($primary, $lightness: 70%);
-}
-
 .read-state {
   color: scale-color($tertiary, $lightness: 50%);
   position: absolute;

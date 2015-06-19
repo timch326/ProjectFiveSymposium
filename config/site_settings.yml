@@ -37,7 +37,7 @@ required:
     type: username
   logo_url:
     client: true
-    default: '/images/d-logo-sketch.png'
+    default: '/images/logo.png'
   logo_small_url:
     client: true
     default: '/images/d-logo-sketch-small.png'

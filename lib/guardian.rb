@@ -51,6 +51,10 @@ class Guardian
     @user.admin?
   end
 
+  def is_super_admin?
+    @user.user_role == "super_admin"
+  end
+
   def is_staff?
     @user.staff?
   end
@@ -58,6 +62,7 @@ class Guardian
   def is_moderator?
     @user.moderator?
   end
+
 
   def is_developer?
     @user &&
@@ -182,6 +187,18 @@ class Guardian
   def can_change_trust_level?(user)
     user && is_staff?
   end
+
+
+
+  def can_change_user_role?(user)
+
+    puts "is admin  ? " , is_admin?
+    puts "is super admin  ? " , is_super_admin?
+
+    is_admin? || is_super_admin? == "super_admin"
+    
+  end
+
 
   # Support sites that have to approve users
   def can_access_forum?

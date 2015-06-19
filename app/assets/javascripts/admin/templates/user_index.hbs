@@ -31,19 +31,28 @@
       {{/link-to}}
     </div>
   </div>
+  
+  <div class='display-row'>
+    <div class='field'>{{model.userRoleInstructions}}</div>
+    <div class="value">
+      {{#if model.canChangeUserRole}}
 
-  <div class = 'display-row userRole-display'>
-	<div class ='field'>User Role</div>
-	 <div class="value">
-      {{combo-box content=site.trustLevels value=model.trust_level nameProperty="detailedName"}}
-      {{#if model.dirty}}
-        <div>
-          <button class='btn ok no-text' {{action "saveTrustLevel" target="content"}}>{{fa-icon "check"}}</button>
-          <button class='btn cancel no-text' {{action "restoreTrustLevel" target="content"}}>{{fa-icon "times"}}</button>
-        </div>
+        {{combo-box name="useRoleChange" content=model.userRolesOptions valueAttribute="value" value=model.user_role}}
+        {{#if model.dirtyUserRole}}
+          <div>
+            <button class='btn ok no-text' {{action "saveUserRole" target="content"}}>{{fa-icon "check"}}</button>
+            <button class='btn cancel no-text' {{action "restoreUserRole" target="content"}}>{{fa-icon "times"}}</button>
+          </div>
+        {{/if}}
+
+      {{else}}
+        {{model.user_role}}
+       
       {{/if}}
-	 </div>
-  </div>
+    </div>
+   </div>	
+
+
 
   {{#if canCheckEmails}}
     <div class='display-row email'>

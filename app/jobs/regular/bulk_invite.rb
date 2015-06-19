@@ -112,6 +112,24 @@ module Jobs
       email = csv_info[0]
       user_role = csv_info[1]
       group_ids = get_group_ids(csv_info[2], csv_line_number)
+
+      # if user is a teacher, add to Teachers auto group
+      if user_role == "teacher"
+        teacher_group = Group.lookup_group("teachers")
+        group_ids.push(teacher_group.id)
+      end
+
+      puts "\n\n\n\n\n\n"
+      puts user_role
+      puts "PRINT ====================================="
+      puts "\n\n\n\n\n\n"
+
+      # if user is a mentor, add to mentors auto group
+      if user_role == "mentor"
+        mentor_group = Group.lookup_group("mentors")
+        group_ids.push(mentor_group.id)
+      end
+
       topic = get_topic(csv_info[3], csv_line_number)
       begin
         Invite.invite_by_email(email, user_role, @current_user, topic, group_ids)
