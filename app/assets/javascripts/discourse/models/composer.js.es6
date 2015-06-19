@@ -28,7 +28,8 @@ const CLOSED = 'closed',
 
       _edit_topic_serializer = {
         title: 'topic.title',
-        categoryId: 'topic.category.id'
+        categoryId: 'topic.category.id',
+        is_note: 'topic.is_note'
       };
 
 const Composer = RestModel.extend({
@@ -384,6 +385,7 @@ const Composer = RestModel.extend({
       });
     }
     if (opts.title) { this.set('title', opts.title); }
+    if (opts.is_note) { this.set('is_note', opts.is_note); }
     this.set('originalText', opts.draft ? '' : this.get('reply'));
 
     return false;

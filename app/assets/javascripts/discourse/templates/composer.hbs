@@ -62,8 +62,10 @@
             </div>
 
               <div>
-                {{input type="checkbox" checked=model.is_note}}
-                {{i18n 'composer.is_note'}}
+                <label>
+                  {{input type="checkbox" checked=model.is_note tabindex="3"}}
+                  {{i18n 'composer.is_note'}}
+                </label>
               </div>
           {{/if}}
 

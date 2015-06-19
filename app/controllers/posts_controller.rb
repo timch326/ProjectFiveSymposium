@@ -129,6 +129,7 @@ class PostsController < ApplicationController
     if post.is_first_post?
       changes[:title] = params[:title] if params[:title]
       changes[:category_id] = params[:post][:category_id] if params[:post][:category_id]
+      changes[:is_note] = params[:is_note] if params[:is_note]
     end
 
     revisor = PostRevisor.new(post)
