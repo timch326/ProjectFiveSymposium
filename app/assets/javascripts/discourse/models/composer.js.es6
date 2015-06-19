@@ -22,7 +22,8 @@ const CLOSED = 'closed',
         topic_id: 'topic.id',
         is_warning: 'isWarning',
         archetype: 'archetypeId',
-        target_usernames: 'targetUsernames'
+        target_usernames: 'targetUsernames',
+        is_note: 'is_note'
       },
 
       _edit_topic_serializer = {

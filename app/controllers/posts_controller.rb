@@ -409,6 +409,13 @@ class PostsController < ApplicationController
   end
 
   def create_params
+
+    if params[:is_note]
+      #do nothing, is_note has a value
+    else
+      params[:is_note] = false
+    end
+
     permitted = [
       :raw,
       :topic_id,
@@ -416,7 +423,8 @@ class PostsController < ApplicationController
       :category,
       :target_usernames,
       :reply_to_post_number,
-      :auto_track
+      :auto_track,
+      :is_note
     ]
 
     # param munging for WordPress
