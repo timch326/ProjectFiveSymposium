@@ -48,16 +48,25 @@
                 {{popup-input-tip validation=view.titleValidation shownAt=view.showTitleTip}}
               </div>
 
+
+
               {{#unless model.privateMessage}}
-                <div class="category-input">
-                  {{category-chooser valueAttribute="id" value=model.categoryId scopedCategoryId=scopedCategoryId tabindex="3"}}
-                  {{popup-input-tip validation=view.categoryValidation shownAt=view.showCategoryTip}}
-                </div>
-                {{#if model.archetype.hasOptions}}
-                  <button class='btn' {{action "showOptions"}}>{{i18n 'topic.options'}}</button>
-                {{/if}}
-                {{render "additional-composer-buttons" model}}
+
+
+                   <div class='value'>
+     
+
+
+               {{teacher-category-selector selected=model.categoryId available=availableGroups}}
+                  
+
+      </div>
+                 
+        
+
               {{/unless}}
+
+
             </div>
           {{/if}}
           {{plugin-outlet "composer-fields"}}

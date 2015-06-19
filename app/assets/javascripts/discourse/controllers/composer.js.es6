@@ -23,6 +23,8 @@ export default Ember.ObjectController.extend(Presence, {
     this.set('similarTopics', []);
   }.on('init'),
 
+
+
   showWarning: function() {
     if (!Discourse.User.currentProp('staff')) { return false; }
 
@@ -109,6 +111,9 @@ export default Ember.ObjectController.extend(Presence, {
       }
     },
 
+
+
+
   },
 
   appendText(text, opts) {
@@ -143,6 +148,10 @@ export default Ember.ObjectController.extend(Presence, {
     return Discourse.Category.list();
   }.property(),
 
+
+  groupAdded(added) {
+      console.log("at group added");
+  },
 
   toggle() {
     this.closeAutocomplete();

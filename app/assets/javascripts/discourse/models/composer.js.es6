@@ -44,6 +44,18 @@ const Composer = RestModel.extend({
     return this.get('creatingPrivateMessage') || this.get('topic.archetype') === 'private_message';
   }.property('creatingPrivateMessage', 'topic'),
 
+
+  canBroadcast: function(){
+    return this.user.get('user_role') === 'teacher'|| this.user.get('user_role') === 'super_admin';
+  }.property('user_role'),
+
+
+
+  getUserRole: function(){
+    return this.user.get('user_role');
+  }.property('user_role'),
+
+
   topicFirstPost: Em.computed.or('creatingTopic', 'editingFirstPost'),
 
   editingPost: Em.computed.equal('action', EDIT),
