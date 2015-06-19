@@ -33,7 +33,8 @@ class TopicViewSerializer < ApplicationSerializer
                         :word_count,
                         :deleted_at,
                         :pending_posts_count,
-                        :user_id
+                        :user_id,
+                        :is_note
 
   attributes :draft,
              :draft_key,
@@ -212,6 +213,10 @@ class TopicViewSerializer < ApplicationSerializer
 
   def include_pending_posts_count
     scope.user.staff? && NewPostManager.queue_enabled?
+  end
+
+  def is_note
+    object.topic.note
   end
 
 end

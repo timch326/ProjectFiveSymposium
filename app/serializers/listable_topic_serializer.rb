@@ -22,7 +22,8 @@ class ListableTopicSerializer < BasicTopicSerializer
              :is_warning,
              :notification_level,
              :bookmarked,
-             :liked
+             :liked,
+             :is_note
 
   has_one :last_poster, serializer: BasicUserSerializer, embed: :objects
 
@@ -103,8 +104,12 @@ class ListableTopicSerializer < BasicTopicSerializer
 
   protected
 
-    def unread_helper
-      @unread_helper ||= Unread.new(object, object.user_data)
-    end
+  def unread_helper
+    @unread_helper ||= Unread.new(object, object.user_data)
+  end
+
+  def is_note
+    object.note
+  end
 
 end
