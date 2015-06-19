@@ -6,8 +6,8 @@
                     <h4>Feedback</h4>
                     <i class="fa fa-comment"></i>
                     <span>
-                        {{#if model.feedback.voter_count}}
-                          {{model.feedback.voter_count}}
+                        {{#if topic.feedback.voter_count}}
+                          {{topic.feedback.voter_count}}
                         {{else}}
                           0
                         {{/if}}
@@ -15,7 +15,7 @@
                 </a>
             </li>
 
-          {{#each feedback in model.feedbackResults}}
+          {{#each feedback in topic.feedbackResults}}
               <li class="secondary">
                   <span><i class="{{feedback.styleClasses}}"></i></span>
                   <h4>{{feedback.votes}}</h4>
