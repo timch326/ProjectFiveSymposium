@@ -46,6 +46,10 @@ export default Ember.Object.extend({
       results.push({icon: 'eye-slash', key: 'invisible'});
     }
 
+    if(topic.get('is_note')) {
+      results.push({icon: 'file-text', key: 'note'});
+    }
+
     _.each(results, function(result){
       result.title = I18n.t("topic_statuses." + result.key + ".help");
       if(!self.disableActions && (result.key === "pinned" ||result.key === "unpinned")){

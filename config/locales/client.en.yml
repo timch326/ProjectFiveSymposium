@@ -1523,6 +1523,8 @@ en:
         help: "This topic is archived; it is frozen and cannot be changed"
       invisible:
         help: "This topic is unlisted; it will not be displayed in topic lists, and can only be accessed via a direct link"
+      note:
+        help: "This is a note"
 
     posts: "Posts"
     posts_lowercase: "posts"
