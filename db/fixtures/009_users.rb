@@ -20,6 +20,7 @@ User.seed do |u|
   u.approved = true
   u.email_private_messages = false
   u.trust_level = TrustLevel[4]
+  u.user_role = "super_admin"
 end
 
 Group.user_trust_level_change!(-1 ,TrustLevel[4])

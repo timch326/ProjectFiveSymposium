@@ -9,7 +9,6 @@ class AddUserroleToUsers < ActiveRecord::Migration
       u.save!
     end
  
-    change_column :users, :user_role, :string, :null => false
 
   end
 end
