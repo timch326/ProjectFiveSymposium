@@ -12,7 +12,7 @@ unless Rails.env.test?
                                  title: I18n.t(title_key, default: I18n.t(title_key, locale: :en)),
                                  raw: body_override.present? ? body_override : I18n.t(body_key, params.merge(default: I18n.t(body_key, params.merge(locale: :en)))),
                                  skip_validations: true,
-                                 category: category ? category.name : nil)
+                                 category: category ? category.name : nil, is_note: true)
       post = creator.create
 
       raise "Failed to create the #{description} topic! #{creator.errors.full_messages.join('. ')}" if creator.errors.present?
@@ -42,15 +42,15 @@ end
 if seed_welcome_topics
   puts "Seeding welcome topics"
 
-  PostCreator.create(Discourse.system_user, raw: I18n.t('assets_topic_body'), title: "Assets for the site design", skip_validations: true, category: staff ? staff.name : nil)
+  PostCreator.create(Discourse.system_user, raw: I18n.t('assets_topic_body'), title: "Assets for the site design", skip_validations: true, category: staff ? staff.name : nil, is_note: true)
 
   welcome = File.read(Rails.root + 'docs/WELCOME-TO-DISCOURSE.md')
-  post = PostCreator.create(Discourse.system_user, raw: welcome, title: "Welcome to Discourse", skip_validations: true)
+  post = PostCreator.create(Discourse.system_user, raw: welcome, title: "Welcome to Discourse", skip_validations: true,  is_note: true)
   post.topic.update_pinned(true, true)
 
   lounge = Category.find_by(id: SiteSetting.lounge_category_id)
   if lounge
-    post = PostCreator.create(Discourse.system_user, raw: I18n.t('lounge_welcome.body'), title: I18n.t('lounge_welcome.title'), skip_validations: true, category: lounge.name)
+    post = PostCreator.create(Discourse.system_user, raw: I18n.t('lounge_welcome.body'), title: I18n.t('lounge_welcome.title'), skip_validations: true, category: lounge.name, is_note: true)
     post.topic.update_pinned(true)
   end
 
@@ -64,5 +64,5 @@ if seed_welcome_topics
                       raw: welcome,
                       title: DiscoursePluginRegistry.seed_data["admin_quick_start_title"] || "READ ME FIRST: Admin Quick Start Guide",
                       skip_validations: true,
-                      category: staff ? staff.name : nil)
+                      category: staff ? staff.name : nil , is_note: true)
 end
