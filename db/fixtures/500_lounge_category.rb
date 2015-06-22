@@ -18,7 +18,8 @@ unless Rails.env.test?
           title: I18n.t('category.topic_prefix', category: lounge.name),
           category: lounge.name,
           archetype: Archetype.default,
-          skip_validations: true
+          skip_validations: true, 
+          note: true
         )
         post = creator.create
 
