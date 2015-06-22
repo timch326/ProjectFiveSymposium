@@ -19,7 +19,7 @@ unless Rails.env.test?
           category: lounge.name,
           archetype: Archetype.default,
           skip_validations: true, 
-          note: true
+          is_note: true
         )
         post = creator.create
 
