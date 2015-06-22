@@ -7,7 +7,8 @@ unless Rails.env.test?
         raw: I18n.t('meta_category_description'),
         title: I18n.t('category.topic_prefix', category: meta.name),
         category: meta.name,
-        archetype: Archetype.default
+        archetype: Archetype.default, 
+          is_note: true
       )
       post = creator.create
 

@@ -16,7 +16,8 @@ unless Rails.env.test?
           raw: I18n.t('staff_category_description'),
           title: I18n.t('category.topic_prefix', category: staff.name),
           category: staff.name,
-          archetype: Archetype.default
+          archetype: Archetype.default, 
+          is_note: true
         )
         post = creator.create
 
