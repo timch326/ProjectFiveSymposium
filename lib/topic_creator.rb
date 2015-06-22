@@ -66,7 +66,8 @@ class TopicCreator
     topic_params = {
       title: @opts[:title],
       user_id: @user.id,
-      last_post_user_id: @user.id
+      last_post_user_id: @user.id,
+      note: @opts[:is_note]
     }
 
     [:subtype, :archetype, :meta_data, :import_mode].each do |key|
@@ -125,7 +126,6 @@ class TopicCreator
 
   def save_topic(topic)
     topic.disable_rate_limits! if @opts[:skip_validations]
-
     unless topic.save(validate: !@opts[:skip_validations])
       rollback_from_errors!(topic)
     end

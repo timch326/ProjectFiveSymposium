@@ -67,6 +67,11 @@ class PostRevisor
     tc.topic.title = title
   end
 
+  track_topic_field(:is_note) do |tc, is_note|
+    tc.record_change('note', tc.topic.note, is_note)
+    tc.topic.note = is_note
+  end
+
   track_topic_field(:category_id) do |tc, category_id|
     tc.record_change('category_id', tc.topic.category_id, category_id)
     tc.check_result(tc.topic.change_category_to_id(category_id))

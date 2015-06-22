@@ -1,0 +1,110 @@
+
+.topic-title-outlet.choose-tags {
+  margin-left: 25px;
+  margin-top: 3px;
+}
+
+.tag-list {
+  margin-top: 2em;
+}
+
+.tag-box {
+  display: inline-block;
+  width: 300px;
+  margin-bottom: 1em;
+  float: left;
+
+  .discourse-tag {
+    font-size: 1em;
+  }
+
+  .tag-count {
+    font-size: 0.9em;
+  }
+}
+
+.extra-info-wrapper {
+  .discourse-tag {
+    -webkit-animation: fadein .7s;
+    animation: fadein .7s;
+  }
+}
+
+
+.add-tags .select2 {
+  margin: 0;
+}
+
+.discourse-tag-count {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.select2-result-label .discourse-tag {
+  margin-right: 0;
+}
+
+.discourse-tag {
+  padding: 0;
+  margin: 0 5px 0 0;
+
+  /* !important is needed in the select2 widget to overwrite default styles */
+  color: #999 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  font-weight: bold !important;
+}
+
+header .discourse-tag {color: scale-color($header_primary, $lightness: 50%) !important; }
+
+.list-tags {
+  display: inline;
+  margin: 0 0 0 5px;
+  line-height: 1.5;
+  font-size: 0.857em;
+
+}
+
+.tag-chooser {
+  width: 500px;
+  margin: 5px 0;
+}
+
+.admin-tag {
+  position: relative;
+  float: right;
+  margin-right: 8px;
+}
+
+.tag-notification-menu {
+  float: right;
+  margin-bottom: 10px;
+}
+
+.tag-notification-menu .dropdown-menu {
+  right: 0;
+  top: 30px;
+  bottom: auto;
+  left: auto;
+}
+
+.bullet + .list-tags {
+  line-height: 1;
+  display: block;
+  padding-top: 5px;
+}
+
+.bar + .list-tags {
+  line-height: 1.25;
+  .discourse-tag {
+    vertical-align: middle;
+    }
+}
+
+.box + .list-tags {
+  display: inline-block;
+  margin: 5px 0 0 5px;
+  padding-top: 2px;
+
+}

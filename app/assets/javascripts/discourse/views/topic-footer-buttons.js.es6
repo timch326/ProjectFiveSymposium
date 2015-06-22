@@ -28,9 +28,9 @@ export default DiscourseContainerView.extend({
       }
       if (!topic.get('isPrivateMessage')) {
         // We hide some controls from private messages
-        if (this.get('topic.details.can_invite_to')) {
-          this.attachViewClass(InviteReplyButton);
-        }
+        //if (this.get('topic.details.can_invite_to')) {
+        //  this.attachViewClass(InviteReplyButton);
+        //}
         this.attachViewClass(BookmarkButton);
         this.attachViewClass(ShareButton);
         if (this.get('topic.details.can_flag_topic')) {

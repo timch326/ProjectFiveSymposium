@@ -46,5 +46,6 @@ export default Ember.Component.extend(StringBuffer, {
     renderIconIf('topic.pinned', 'thumb-tack', 'pinned', this.get("canAct") );
     renderIconIf('topic.unpinned', 'thumb-tack', 'unpinned', this.get("canAct"));
     renderIconIf('topic.invisible', 'eye-slash', 'invisible');
+    renderIconIf('topic.is_note', 'file-text', 'note');
   }
 });
